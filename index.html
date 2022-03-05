@@ -8,8 +8,8 @@
 <p id="demo">Click the button to get your position:</p>
 <button onclick="getLocation()">Try It</button>
 <div id="mapholder"></div>
-<script src="https://maps.google.com/maps/api/js?sensor=false"></script>
-  </body>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKkyyFrPfUuG7E-r1O1vIKapzkdCFNqeo&libraries=places"></script>
+  
   <script>
 ​var x=document.getElementById("demo");
 function getLocation()
@@ -59,4 +59,5 @@ function showError(error)
     }
   }
   </script>
+    </body>
 </html>
