@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <html>
+      <head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <style type="text/css">
+          html { height: 100% }
+          body { height: 100%; margin: 0; padding: 0 }
+          #map_canvas { height: 100% }
+        </style>
+
+        <script type="text/javascript"
+          src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA5wa4_VHXgAoUA9NOwlW-J-ibOuLc4Yaw&sensor=false">
+        </script>
+
+
+
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+      var map;
+      function initialize() {
+// sample longitude and latitude
+        var locations = [
+          ['Deolali',    20.022703,73.72811],
+          ['Nasik Road',  20.02929,73.722362],
+        ];
+        var map_center = new google.maps.LatLng(20.022703,73.72811);
+        var str='<h2>Deolali,Nasik Road,Nasik</h2>'
+        var myOptions = {
+          zoom: 10,
+          center: map_center,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+         for (i = 0; i < locations.length; i++) {
+        var store1 = new google.maps.LatLng(locations[i][1], locations[i][2]);
+
+    var infowindow = new google.maps.InfoWindow({
+        content: str
+    });
+
+
+
+            var marker1 = new google.maps.Marker({
+            position: store1, 
+            map: map, 
+            title:"Store 1"
+        });
+
+        google.maps.event.addListener(marker1, 'click', function() {
+          map.set_center(store1);
+          map.set_zoom(16);
+          marker1.openInfoWindowHtml('here I am');
+          infowindow.open(map,marker);
+
+        });
+    }
+
+
+      }
+    </script>
+
+      </head>
+      <body onload="initialize()">
+        <div id="map_canvas" style="width:100%; height:100%"></div>
+      </body>
+    </html>
